@@ -15,11 +15,9 @@ Desde en un terminal:
 
 ## Arrancar la base de datos
 
-1. Levantar el contenedor con:
-
-`docker run -d -it --name oracle12c -p 1521:1521 -v oracle12c_data:/ORCL store/oracle/database-enterprise:12.2.0.1-slim`
-
-2. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida de `docker ps` 
+1. Clonar o descargar este repositorio a una carpeta en el ordenador local.
+2. Levantar el contenedor ejecutando en la carpeta que contiene el fichero `docker-compose.yml` el comando `docker-compose up -d`
+3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida de `docker ps`
 
 ## Datos de conexión para SQL Developer
 
