@@ -1,5 +1,12 @@
 # Oracle 12c con Docker
 
+Instrucciones y fichero de configuración para arrancar una base de datos Oracle 12c en local mediante Docker.
+
+## Prerrequisitos
+
+1. Instalar [Docker](https://www.docker.com/get-started).
+2. Clonar o descargar este repositorio.
+
 ## Descarga de la imagen
 
 En el navegador:
@@ -15,9 +22,9 @@ Desde en un terminal:
 
 ## Arrancar la base de datos
 
-1. Clonar o descargar este repositorio a una carpeta en el ordenador local.
-2. Levantar el contenedor ejecutando en la carpeta que contiene el fichero `docker-compose.yml` el comando `docker-compose up -d`
-3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida de `docker ps`
+1. En un terminal, situarse en la carpeta que contiene el fichero `docker-compose.yml`.
+2. Iniciar el servicio con el comando `docker-compose up -d`
+3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `docker ps`
 
 ## Datos de conexión para SQL Developer
 
