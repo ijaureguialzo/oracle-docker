@@ -37,3 +37,7 @@ Desde en un terminal:
 | Host | `localhost` |
 | Puerto | `1521` |
 | SID | `ORCLCDB` |
+
+## Script para crear usuario
+
+Para crear un usuario _normal_ con el que trabajar, en el fichero [crear_usuario.sql](crear_usuario.sql) hay un script que se puede adaptar y lanzar desde SQL Developer.
