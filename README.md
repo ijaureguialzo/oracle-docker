@@ -4,27 +4,25 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 ## Prerrequisitos
 
-1. Instalar [Docker](https://www.docker.com/get-started).
+1. Instalar [Docker](https://www.docker.com/products/docker-desktop).
 2. Clonar o descargar este repositorio.
 
 ## Descarga de la imagen
 
-En el navegador:
-
 1. Registrarse en [Docker Hub](https://hub.docker.com).
 2. Buscar la imagen oficial de [Oracle Database Enterprise Edition](https://hub.docker.com/_/oracle-database-enterprise-edition).
-3. Pulsar en "Proceed to Checkout" para _comprar_ la imagen (es gratis, a cambio de los datos personales, para desarrolladores).
+3. Pulsar en `Proceed to Checkout` para _comprar_ la imagen (es gratis, a cambio de los datos personales, para desarrolladores).
 
-Desde en un terminal:
+## Iniciar sesión en Docker Hub
 
-4. Iniciar sesión con `docker login` y las credenciales de Docker Hub.
-5. Descargar la imagen con `docker pull store/oracle/database-enterprise:12.2.0.1-slim`
+1. Hacer click en el icono de Docker en la barra de estado e iniciar sesión con la cuenta de Docker Hub haciendo click en `Sign In / Create Docker ID`.
+2. Iniciar sesión con el usuario y contraseña creado en el apartado anterior.
 
 ## Arrancar la base de datos
 
 1. En un terminal, situarse en la carpeta que contiene el fichero `docker-compose.yml`.
-2. Iniciar el servicio con el comando `docker-compose up -d`
-3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `docker ps`
+2. Iniciar el servicio con el comando `docker-compose up -d`.
+3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `docker ps`.
 
 ## Datos de conexión para SQL Developer
 
