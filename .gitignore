@@ -1,7 +1,8 @@
-### https://raw.github.com/github/gitignore/042be9dc99df945d78c0b66306b92142bb09109c/Global/Windows.gitignore
+### https://raw.github.com/github/gitignore/3df9bc0bd9cb0c3f5ea0904e88b9df5a378ccd59/Global/Windows.gitignore
 
 # Windows thumbnail cache files
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
 
@@ -25,7 +26,7 @@ $RECYCLE.BIN/
 *.lnk
 
 
-### https://raw.github.com/github/gitignore/042be9dc99df945d78c0b66306b92142bb09109c/Global/Linux.gitignore
+### https://raw.github.com/github/gitignore/3df9bc0bd9cb0c3f5ea0904e88b9df5a378ccd59/Global/Linux.gitignore
 
 *~
 
@@ -42,7 +43,7 @@ $RECYCLE.BIN/
 .nfs*
 
 
-### https://raw.github.com/github/gitignore/042be9dc99df945d78c0b66306b92142bb09109c/Global/macOS.gitignore
+### https://raw.github.com/github/gitignore/3df9bc0bd9cb0c3f5ea0904e88b9df5a378ccd59/Global/macOS.gitignore
 
 # General
 .DS_Store
@@ -73,4 +74,4 @@ Temporary Items
 
 
 
-\.idea/
+.idea/
