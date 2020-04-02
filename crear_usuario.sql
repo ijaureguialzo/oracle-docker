@@ -5,7 +5,7 @@ drop user egibide cascade;
 
 -- REF: http://oracle-apprentice.blogspot.com/2011/03/oracle-password-restriction-solution.html
 create user egibide
-identified by "12345abcde";
+identified by "12345Abcde";
 
 grant connect, resource to egibide;
 grant unlimited tablespace to egibide;
