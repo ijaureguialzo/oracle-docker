@@ -5,18 +5,24 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 ## Prerrequisitos
 
 1. Instalar [Docker Desktop](https://www.docker.com/products/docker-desktop).
-2. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere iniciar sesión con una cuenta de Oracle o crear una nueva si todavía no se dispone de una).
+2. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
+   iniciar sesión con una cuenta de Oracle o crear una nueva si todavía no se dispone de una).
 3. Clonar o descargar este repositorio.
 
-## Descarga de la imagen
+## "Comprar" la imagen de Oracle Database en Docker Hub
 
 1. Registrarse en [Docker Hub](https://hub.docker.com).
-2. Buscar la imagen oficial de [Oracle Database Enterprise Edition](https://hub.docker.com/_/oracle-database-enterprise-edition).
-3. Pulsar en `Proceed to Checkout` para _comprar_ la imagen (es gratis, a cambio de los datos personales, para desarrolladores).
+2. Buscar la imagen oficial
+   de [Oracle Database Enterprise Edition](https://hub.docker.com/_/oracle-database-enterprise-edition).
+3. Pulsar en `Proceed to Checkout` para _comprar_ la imagen (es _gratis_, a cambio de los datos personales, para
+   desarrolladores).
+
+> Siguiendo estos pasos, la imagen queda asociada a nuestra cuenta de Docker Hub, no hay que hacer nada más.
 
 ## Iniciar sesión en Docker Hub
 
-1. Hacer click en el icono de Docker en la barra de estado e iniciar sesión con la cuenta de Docker Hub haciendo click en `Sign In / Create Docker ID`.
+1. Hacer click en el icono de Docker en la barra de estado e iniciar sesión con la cuenta de Docker Hub haciendo click
+   en `Sign In / Create Docker ID`.
 2. Iniciar sesión con el usuario y contraseña de Docker Hub creado en el apartado anterior.
 
 ## Arrancar la base de datos
@@ -41,4 +47,5 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 ## Script para crear usuario
 
-Para crear un usuario _normal_ con el que trabajar, en el fichero [crear_usuario.sql](crear_usuario.sql) hay un script que se puede adaptar y lanzar desde SQL Developer.
+Para crear un usuario _normal_ con el que trabajar, en el fichero [crear_usuario.sql](crear_usuario.sql) hay un script
+que se puede adaptar y lanzar desde SQL Developer.
