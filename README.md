@@ -6,7 +6,8 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 1. Instalar [Docker Desktop](https://www.docker.com/products/docker-desktop).
 2. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
-   iniciar sesión con una cuenta de Oracle o crear una nueva si todavía no se dispone de una).
+   iniciar sesión con una cuenta de Oracle o crear una nueva si todavía no se dispone de una)
+   o [JetBrains DataGrip](https://www.jetbrains.com/es-es/datagrip/) (requiere una suscripción).
 3. Clonar o descargar este repositorio.
 
 ## "Comprar" la imagen de Oracle Database en Docker Hub
@@ -31,7 +32,9 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 2. Iniciar el servicio con el comando `docker-compose up -d`.
 3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `docker ps`.
 
-## Datos de conexión para SQL Developer
+> Para parar el servidor hay que utilizar el comando `docker-compose stop`.
+
+## Datos de conexión
 
 | Clave | Valor |
 |---|---|
@@ -43,9 +46,17 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 | Puerto | `1521` |
 | SID | `ORCLCDB` |
 
-![](conexion.png)
-
 ## Script para crear usuario
 
-Para crear un usuario _normal_ con el que trabajar, en el fichero [crear_usuario.sql](crear_usuario.sql) hay un script
-que se puede adaptar y lanzar desde SQL Developer.
+Para crear un usuario _normal_ con el que trabajar, el fichero [crear_usuario.sql](crear_usuario.sql) contiene un script
+que se puede adaptar y ejecutar estando conectado como `sys` al servidor.
+
+## Conexión al servidor de base de datos
+
+### Desde SQL Developer
+
+![](conexion.png)
+
+### Desde DataGrip
+
+![](datagrip.png)
