@@ -4,7 +4,8 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 ## Prerrequisitos
 
-1. Instalar [Docker Desktop](https://www.docker.com/products/docker-desktop).
+1. Instalar Docker para [Windows y macOS](https://www.docker.com/products/docker-desktop)
+   o [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 2. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
    iniciar sesión con una cuenta de Oracle o crear una nueva si todavía no se dispone de una)
    o [JetBrains DataGrip](https://www.jetbrains.com/es-es/datagrip/) (requiere una suscripción).
@@ -29,10 +30,17 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 ## Arrancar la base de datos
 
 1. En un terminal, situarse en la carpeta que contiene el fichero `docker-compose.yml`.
-2. Iniciar el servicio con el comando `docker-compose up -d`.
+2. Arrancar el servidor:
+
+   ```shell
+   make start
+   ```
+
+   > En Windows, para usar el comando `make`, hay que [instalar Chocolatey](https://chocolatey.org/install) y después instalarlo mediante `choco install make`.
+
 3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `docker ps`.
 
-> Para parar el servidor hay que utilizar el comando `docker-compose stop`.
+   > Para parar el servidor hay que utilizar el comando `make stop`.
 
 ## Datos de conexión
 
