@@ -2,14 +2,36 @@
 
 Instrucciones y fichero de configuración para arrancar una base de datos Oracle 12c en local mediante Docker.
 
+> ⚠️ Estas instrucciones solo sirven para Macs con procesador Intel; no funcionan en los M1 porque no hay versión
+> de Oracle Database para arquitectura ARM64.
+
 ## Prerrequisitos
 
-1. Instalar Docker para [Windows y macOS](https://www.docker.com/products/docker-desktop)
-   o [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+1. Instalar Docker Desktop para [Windows y macOS](https://www.docker.com/products/docker-desktop)
+   o [Linux](https://docs.docker.com/desktop/linux/).
+
 2. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
    iniciar sesión con una cuenta de Oracle o crear una nueva si todavía no se dispone de una)
    o [JetBrains DataGrip](https://www.jetbrains.com/es-es/datagrip/) (requiere una suscripción).
-3. Clonar o descargar este repositorio.
+
+3. En Windows, instalar [Scoop](https://scoop.sh) usando PowerShell:
+
+   ```powershell
+   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+   ```
+
+   Y después instalar los comandos necesarios:
+
+   ```powershell
+   scoop install git make
+   ```
+
+4. Clonar este repositorio:
+
+   ```shell
+   git clone https://github.com/ijaureguialzo/oracle12c.git
+   ```
 
 ## "Comprar" la imagen de Oracle Database en Docker Hub
 
@@ -35,8 +57,6 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
    ```shell
    make start
    ```
-
-   > En Windows, para usar el comando `make`, hay que [instalar Chocolatey](https://chocolatey.org/install) y después instalarlo mediante `choco install make`.
 
 3. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `docker ps`.
 
