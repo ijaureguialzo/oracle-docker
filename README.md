@@ -70,15 +70,15 @@ Pedirá el usuario y contraseña de la cuenta de Oracle.
 
 ## Datos de conexión
 
-| Clave            | Valor                                                                                                    |
-|------------------|----------------------------------------------------------------------------------------------------------|
-| Usuario          | `sys`                                                                                                    |
-| Contraseña       | Se genera automáticamente en el primer arranque y se muestra en el log. Para verla, ejecutar `make logs` |
-| Tipo de conexión | Básico                                                                                                   |
-| Rol              | `SYSDBA`                                                                                                 |
-| Host             | `localhost`                                                                                              |
-| Puerto           | `1521`                                                                                                   |
-| SID              | `ORCLCDB`                                                                                                |
+| Clave            | Valor        |
+|------------------|--------------|
+| Usuario          | `sys`        |
+| Contraseña       | `12345Abcde` |
+| Tipo de conexión | Básico       |
+| Rol              | `SYSDBA`     |
+| Host             | `localhost`  |
+| Puerto           | `1521`       |
+| SID              | `ORCLCDB`    |
 
 ## Script para crear usuario
 

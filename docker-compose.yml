@@ -4,6 +4,10 @@ services:
 
   server:
     image: container-registry.oracle.com/database/enterprise:latest
+    environment:
+      - ORACLE_SID=ORCLCDB
+      - ORACLE_EDITION=standard # enterprise
+      - ORACLE_PWD=12345Abcde
     volumes:
       - data:/opt/oracle/oradata
     ports:
