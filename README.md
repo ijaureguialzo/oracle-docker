@@ -17,6 +17,7 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 3. En Windows, instalar [Scoop](https://scoop.sh) usando PowerShell:
 
    ```powershell
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
    ```
