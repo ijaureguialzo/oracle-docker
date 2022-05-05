@@ -2,7 +2,7 @@ help:
 	@echo 'Opciones:'
 	@echo ''
 	@echo 'start | stop | restart | stop-all'
-	@echo 'stats | logs | workspace'
+	@echo 'stats | logs | workspace | sqlplus'
 	@echo 'clean'
 
 start:
@@ -24,6 +24,9 @@ logs:
 
 workspace:
 	@docker-compose exec server /bin/bash
+
+sqlplus:
+	@docker-compose exec server sqlplus / as sysdba
 
 clean:
 	@docker-compose down -v --remove-orphans

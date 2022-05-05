@@ -33,21 +33,26 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
    git clone https://github.com/ijaureguialzo/oracle12c.git
    ```
 
-## "Comprar" la imagen de Oracle Database en Docker Hub
+## "Comprar" la imagen de Oracle Database en Oracle Container Registry
 
-1. Registrarse en [Docker Hub](https://hub.docker.com).
-2. Buscar la imagen oficial
-   de [Oracle Database Enterprise Edition](https://hub.docker.com/_/oracle-database-enterprise-edition).
-3. Pulsar en `Proceed to Checkout` para _comprar_ la imagen (es _gratis_, a cambio de los datos personales, para
+1. Buscar la imagen oficial
+   de [Oracle Database Enterprise Edition](https://container-registry.oracle.com/ords/f?p=113:4:6346328126496:::4:P4_REPOSITORY,AI_REPOSITORY,AI_REPOSITORY_NAME,P4_REPOSITORY_NAME,P4_EULA_ID,P4_BUSINESS_AREA_ID:9,9,Oracle%20Database%20Enterprise%20Edition,Oracle%20Database%20Enterprise%20Edition,6,0&cs=3d7S7J47epiaT8Vq1utloicweB2qendPAlshTo3MK16NtIKtyZzj28QPB2jsuUNu0aPrc7P3SBtSh-poXV78pjg)
+   .
+2. Iniciar sesión con la cuenta de Oracle, aceptar el acuerdo de licencia y _comprar_ la imagen (es _gratis_, a cambio
+   de los datos personales, para
    desarrolladores).
 
 > Siguiendo estos pasos, la imagen queda asociada a nuestra cuenta de Docker Hub, no hay que hacer nada más.
 
-## Iniciar sesión en Docker Hub
+## Iniciar sesión en Oracle Container Registry
 
-1. Hacer click en el icono de Docker en la barra de estado e iniciar sesión con la cuenta de Docker Hub haciendo click
-   en `Sign In / Create Docker ID`.
-2. Iniciar sesión con el usuario y contraseña de Docker Hub creado en el apartado anterior.
+Abrir un terminal y lanzar el comando:
+
+   ```shell
+   docker login container-registry.oracle.com
+   ```
+
+Pedirá el usuario y contraseña de la cuenta de Oracle.
 
 ## Arrancar la base de datos
 
@@ -64,15 +69,15 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 ## Datos de conexión
 
-| Clave | Valor |
-|---|---|
-| Usuario | `sys` |
-| Contraseña | `Oradoc_db1` |
-| Tipo de conexión | Básico |
-| Rol | `SYSDBA` |
-| Host | `localhost` |
-| Puerto | `1521` |
-| SID | `ORCLCDB` |
+| Clave            | Valor                                                                                                    |
+|------------------|----------------------------------------------------------------------------------------------------------|
+| Usuario          | `sys`                                                                                                    |
+| Contraseña       | Se genera automáticamente en el primer arranque y se muestra en el log. Para verla, ejecutar `make logs` |
+| Tipo de conexión | Básico                                                                                                   |
+| Rol              | `SYSDBA`                                                                                                 |
+| Host             | `localhost`                                                                                              |
+| Puerto           | `1521`                                                                                                   |
+| SID              | `ORCLCDB`                                                                                                |
 
 ## Script para crear usuario
 
