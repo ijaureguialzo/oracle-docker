@@ -39,9 +39,9 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 ## "Comprar" la imagen de Oracle Database en Oracle Container Registry
 
-1. Buscar la imagen oficial
-   de [Oracle Database Enterprise Edition](https://container-registry.oracle.com/ords/f?p=113:4:6346328126496:::4:P4_REPOSITORY,AI_REPOSITORY,AI_REPOSITORY_NAME,P4_REPOSITORY_NAME,P4_EULA_ID,P4_BUSINESS_AREA_ID:9,9,Oracle%20Database%20Enterprise%20Edition,Oracle%20Database%20Enterprise%20Edition,6,0&cs=3d7S7J47epiaT8Vq1utloicweB2qendPAlshTo3MK16NtIKtyZzj28QPB2jsuUNu0aPrc7P3SBtSh-poXV78pjg)
-   en [Oracle Container Registry](https://container-registry.oracle.com).
+1. Buscar la imagen oficial de Oracle Database Enterprise Edition
+   en [Oracle Container Registry](https://container-registry.oracle.com) haciendo click en `Database` y luego
+   en `enterprise`.
 2. Iniciar sesión con la cuenta de Oracle, aceptar el acuerdo de licencia y _comprar_ la imagen (es _gratis_, a cambio
    de los datos personales, para desarrolladores).
 
