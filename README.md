@@ -1,6 +1,6 @@
-# Oracle 12c con Docker
+# Oracle Database con Docker
 
-Instrucciones y fichero de configuración para arrancar una base de datos Oracle 12c en local mediante Docker.
+Instrucciones y fichero de configuración para arrancar una base de datos Oracle 21c en local mediante Docker.
 
 > ⚠️ Estas instrucciones solo sirven para Macs con procesador Intel; no funcionan en los M1 porque no hay versión
 > de Oracle Database para arquitectura ARM64.
@@ -10,11 +10,14 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 1. Instalar Docker Desktop para [Windows y macOS](https://www.docker.com/products/docker-desktop)
    o [Linux](https://docs.docker.com/desktop/linux/).
 
-2. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
-   iniciar sesión con una cuenta de Oracle o crear una nueva si todavía no se dispone de una)
-   o [JetBrains DataGrip](https://www.jetbrains.com/es-es/datagrip/) (requiere una suscripción).
+2. Iniciar sesión con la [cuenta de Oracle](https://profile.oracle.com/) o crear una nueva si todavía no se dispone de
+   una.
 
-3. En Windows, instalar [Scoop](https://scoop.sh) usando PowerShell:
+3. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
+   iniciar sesión con una cuenta de Oracle) o [JetBrains DataGrip](https://www.jetbrains.com/es-es/datagrip/) (requiere
+   una suscripción).
+
+4. En Windows, instalar [Scoop](https://scoop.sh) usando PowerShell:
 
    ```powershell
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -28,24 +31,23 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
    scoop install git make
    ```
 
-4. Clonar este repositorio:
+5. Clonar este repositorio:
 
    ```shell
-   git clone https://github.com/ijaureguialzo/oracle12c.git
+   git clone https://github.com/ijaureguialzo/oracle-docker.git
    ```
 
 ## "Comprar" la imagen de Oracle Database en Oracle Container Registry
 
 1. Buscar la imagen oficial
    de [Oracle Database Enterprise Edition](https://container-registry.oracle.com/ords/f?p=113:4:6346328126496:::4:P4_REPOSITORY,AI_REPOSITORY,AI_REPOSITORY_NAME,P4_REPOSITORY_NAME,P4_EULA_ID,P4_BUSINESS_AREA_ID:9,9,Oracle%20Database%20Enterprise%20Edition,Oracle%20Database%20Enterprise%20Edition,6,0&cs=3d7S7J47epiaT8Vq1utloicweB2qendPAlshTo3MK16NtIKtyZzj28QPB2jsuUNu0aPrc7P3SBtSh-poXV78pjg)
-   .
+   en [Oracle Container Registry](https://container-registry.oracle.com).
 2. Iniciar sesión con la cuenta de Oracle, aceptar el acuerdo de licencia y _comprar_ la imagen (es _gratis_, a cambio
-   de los datos personales, para
-   desarrolladores).
+   de los datos personales, para desarrolladores).
 
-> Siguiendo estos pasos, la imagen queda asociada a nuestra cuenta de Docker Hub, no hay que hacer nada más.
+> Siguiendo estos pasos, la imagen queda asociada a nuestra cuenta de Oracle, no hay que hacer nada más.
 
-## Iniciar sesión en Oracle Container Registry
+## Iniciar sesión en Oracle Container Registry con Docker
 
 Abrir un terminal y lanzar el comando:
 
@@ -53,7 +55,7 @@ Abrir un terminal y lanzar el comando:
    docker login container-registry.oracle.com
    ```
 
-Pedirá el usuario y contraseña de la cuenta de Oracle.
+Pedirá el usuario y contraseña de la cuenta de Oracle y tendremos acceso a descargar las imágenes desde el registro.
 
 ## Arrancar la base de datos
 
