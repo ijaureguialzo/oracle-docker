@@ -1,9 +1,9 @@
 help:
-	@echo 'Opciones:'
-	@echo ''
-	@echo 'start | stop | restart | stop-all'
-	@echo 'stats | logs | workspace | sqlplus'
-	@echo 'clean'
+	@echo Opciones:
+	@echo 
+	@echo start / stop / restart / stop-all
+	@echo stats / logs / workspace / sqlplus
+	@echo clean
 
 start:
 	@docker-compose up -d --remove-orphans
