@@ -17,3 +17,5 @@ grant connect, resource to egibide;
 grant unlimited tablespace to egibide;
 grant create synonym, create public synonym to egibide;
 grant create view to egibide;
+
+commit;
