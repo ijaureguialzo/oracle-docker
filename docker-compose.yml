@@ -4,6 +4,7 @@ services:
 
   server:
     image: container-registry.oracle.com/database/enterprise:21.3.0.0
+    platform: linux/amd64
     environment:
       - ORACLE_SID=ORCLCDB
       - ORACLE_EDITION=standard # enterprise
