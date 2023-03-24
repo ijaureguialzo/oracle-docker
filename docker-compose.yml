@@ -3,16 +3,19 @@ version: "3.5"
 services:
 
   server:
-    image: container-registry.oracle.com/database/enterprise:21.3.0.0
+    image: gvenzl/oracle-xe
     platform: linux/amd64
     environment:
-      - ORACLE_SID=ORCLCDB
-      - ORACLE_EDITION=standard # enterprise
-      - ORACLE_PWD=12345Abcde
+      - ORACLE_PASSWORD=${ORACLE_PASSWORD}
     volumes:
       - data:/opt/oracle/oradata
     ports:
       - "1521:1521"
+    healthcheck:
+      test: healthcheck.sh
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
 volumes:
   data:
