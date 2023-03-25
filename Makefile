@@ -42,7 +42,7 @@ _context-docker-desktop:
 	@docker context use default
 
 _start_command:
-	@docker-compose up -d --remove-orphans
+	@docker compose up -d --remove-orphans
 
 start:
 ifneq ("$(ARCH)", "aarch64")
@@ -52,7 +52,7 @@ else
 endif
 
 _stop_command:
-	@docker-compose stop
+	@docker compose stop
 
 stop:
 ifneq ("$(ARCH)", "aarch64")
@@ -74,7 +74,7 @@ else
 endif
 
 _logs_command:
-	@docker-compose logs server
+	@docker compose logs server
 
 logs:
 ifneq ("$(ARCH)", "aarch64")
@@ -94,7 +94,7 @@ else
 endif
 
 _clean_command:
-	@docker-compose down -v --remove-orphans
+	@docker compose down -v --remove-orphans
 
 clean:
 ifneq ("$(ARCH)", "aarch64")
