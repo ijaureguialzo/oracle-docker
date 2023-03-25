@@ -1,6 +1,8 @@
 # Oracle Database con Docker
 
-Instrucciones y fichero de configuración para arrancar una base de datos Oracle 21c en local mediante Docker.
+Instrucciones y fichero de configuración para arrancar una base de
+datos [Oracle Database Express Edition](https://www.oracle.com/es/database/technologies/appdev/xe.html) en local
+mediante [Docker](https://www.docker.com).
 
 ## Prerrequisitos
 
@@ -21,15 +23,24 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
    scoop install make
    ```
 
-3. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
+3. En Macs con procesador Apple Silicon (M1, M2...), instalar [Colima](https://github.com/abiosoft/colima)
+   usando [Homebrew](https://brew.sh):
+
+   ```shell
+   brew install colima
+   ```
+
+4. Instalar [Oracle SQL Developer](https://www.oracle.com/es/database/technologies/appdev/sql-developer.html) (requiere
    iniciar sesión con una cuenta de Oracle) o [JetBrains DataGrip](https://www.jetbrains.com/es-es/datagrip/) (requiere
    una suscripción).
 
-4. Clonar este repositorio:
+5. Clonar este repositorio:
 
    ```shell
    git clone https://github.com/ijaureguialzo/oracle-docker.git
    ```
+
+   > Si el comando anterior no funciona, habrá que [instalar Git](https://git-scm.com/downloads) en el sistema.
 
 ## Arrancar la base de datos
 
@@ -57,20 +68,9 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 3. Arrancar el servidor:
 
-   En Windows, macOS (Intel) y Linux:
-
    ```shell
    make start
    ```
-
-   En macOS (Apple Silicon):
-
-   ```shell
-   make start-m1
-   ```
-
-   > En los Mac con procesador Apple Silicon (M1, M2...), hay que utilizar las versiones `-m1` de las acciones
-   disponible. Se pueden enumerar escribiendo solo `make`.
 
 4. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `make ps`.
 
@@ -78,26 +78,26 @@ Instrucciones y fichero de configuración para arrancar una base de datos Oracle
 
 ## Datos de conexión
 
-| Clave            | Valor        |
-|------------------|--------------|
-| Usuario          | `sys`        |
-| Contraseña       | `12345Abcde` |
-| Tipo de conexión | Básico       |
-| Rol              | `SYSDBA`     |
-| Host             | `localhost`  |
-| Puerto           | `1521`       |
-| SID              | `ORCLCDB`    |
+| Clave            | Valor                               |
+|------------------|-------------------------------------|
+| Usuario          | `SYS`                               |
+| Contraseña       | La configurada en el fichero `.env` |
+| Tipo de conexión | Básico                              |
+| Rol              | `SYSDBA`                            |
+| Host             | `localhost`                         |
+| Puerto           | `1521`                              |
+| SID              | `XE`                                |
 
 ## Script para crear usuario
 
 Para crear un usuario _normal_ con el que trabajar, el fichero [crear_usuario.sql](crear_usuario.sql) contiene un script
-que se puede adaptar y ejecutar estando conectado como `sys` al servidor.
+que se puede adaptar y ejecutar estando conectado como `SYS` al servidor.
 
 ## Conexión al servidor de base de datos
 
 ### Desde SQL Developer
 
-![](conexion.png)
+![](sqldeveloper.png)
 
 ### Desde DataGrip
 
