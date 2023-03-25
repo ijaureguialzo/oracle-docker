@@ -42,6 +42,11 @@ logs:
 
 logs-m1: context-colima logs context-docker-desktop
 
+ps:
+	@docker ps
+
+ps-m1: context-colima ps context-docker-desktop
+
 workspace:
 	@docker-compose exec server /bin/bash
 
