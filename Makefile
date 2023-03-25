@@ -14,14 +14,12 @@ ARCH := $(shell docker run --rm alpine uname -m)
 help: _header
 	${info }
 	@echo Opciones:
-	@echo ---------------------------------------------
+	@echo ----------------------
 	@echo start / stop / restart
-	@echo ---------------------------------------------
-	@echo ps / logs / stats / stop-all
-	@echo ps-m1 / logs-m1 / stats-m1 / stop-all-m1
+	@echo ----------------------
+	@echo ps / logs / stats
 	@echo clean
-	@echo clean-m1 / destroy-m1
-	@echo ---------------------------------------------
+	@echo ----------------------
 
 _header:
 	@echo ----------------
@@ -65,29 +63,42 @@ endif
 
 restart: stop start
 
-ps:
+_ps_command:
 	@docker ps
 
-ps-m1: _context-colima ps _context-docker-desktop
+ps:
+ifneq ("$(ARCH)", "aarch64")
+	@$(MAKE) -f $(THIS_FILE) _ps_command
+else
+	@$(MAKE) -f $(THIS_FILE) _context-colima _ps_command _context-docker-desktop
+endif
 
-logs:
+_logs_command:
 	@docker-compose logs server
 
-logs-m1: _context-colima logs _context-docker-desktop
+logs:
+ifneq ("$(ARCH)", "aarch64")
+	@$(MAKE) -f $(THIS_FILE) _logs_command
+else
+	@$(MAKE) -f $(THIS_FILE) _context-colima _logs_command _context-docker-desktop
+endif
 
-stats:
+_stats_command:
 	@docker stats
 
-stats-m1: _context-colima stats _context-docker-desktop
+stats:
+ifneq ("$(ARCH)", "aarch64")
+	@$(MAKE) -f $(THIS_FILE) _stats_command
+else
+	@$(MAKE) -f $(THIS_FILE) _context-colima _stats_command _context-docker-desktop
+endif
 
-stop-all:
-	@docker stop $(shell docker ps -aq)
-
-stop-all-m1: _context-colima stop-all _context-docker-desktop
-
-clean:
+_clean_command:
 	@docker-compose down -v --remove-orphans
 
-clean-m1: _context-colima clean _context-docker-desktop
-
-destroy-m1: _context-colima clean _colima-delete _context-docker-desktop
+clean:
+ifneq ("$(ARCH)", "aarch64")
+	@$(MAKE) -f $(THIS_FILE) _clean_command
+else
+	@$(MAKE) -f $(THIS_FILE) _context-colima _clean_command _colima-delete _context-docker-desktop
+endif
