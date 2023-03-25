@@ -1,11 +1,15 @@
 #!make
 
+THIS_FILE := $(lastword $(MAKEFILE_LIST))
+
 ifneq (,$(wildcard ./.env))
     include .env
     export
 else
 $(error No se encuentra el fichero .env)
 endif
+
+ARCH := $(shell docker run --rm alpine uname -m)
 
 help: _header
 	${info }
@@ -25,8 +29,15 @@ _header:
 	@echo Oracle en Docker
 	@echo ----------------
 
-start:
+_start_command:
 	@docker-compose up -d --remove-orphans
+
+start:
+ifneq ("$(ARCH)", "aarch64")
+	@$(MAKE) -f $(THIS_FILE) _start_command
+else
+	@$(MAKE) -f $(THIS_FILE) colima-start context-colima _start_command context-docker-desktop
+endif
 
 stop:
 	@docker-compose stop
@@ -44,8 +55,6 @@ context-colima:
 
 context-docker-desktop:
 	@docker context use default
-
-start-m1: colima-start context-colima start context-docker-desktop
 
 stop-m1: context-colima stop colima-stop
 
