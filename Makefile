@@ -1,9 +1,29 @@
-help:
+#!make
+
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+else
+$(error No se encuentra el fichero .env)
+endif
+
+help: _header
+	${info }
 	@echo Opciones:
-	@echo 
-	@echo start / stop / restart / stop-all
-	@echo stats / logs / workspace / sqlplus
+	@echo ---------------------------------------------
+	@echo start / stop / restart
+	@echo start-m1 / stop-m1 / restart-m1
+	@echo ---------------------------------------------
+	@echo ps / logs / stats / stop-all
+	@echo ps-m1 / logs-m1 / stats-m1 / stop-all-m1
 	@echo clean
+	@echo clean-m1 / destroy-m1
+	@echo ---------------------------------------------
+
+_header:
+	@echo ----------------
+	@echo Oracle en Docker
+	@echo ----------------
 
 start:
 	@docker-compose up -d --remove-orphans
@@ -31,27 +51,25 @@ stop-m1: context-colima stop colima-stop
 
 restart-m1: stop-m1 start-m1
 
-stop-all:
-	@docker stop `docker ps -aq`
+ps:
+	@docker ps
 
-stats:
-	@docker stats
+ps-m1: context-colima ps context-docker-desktop
 
 logs:
 	@docker-compose logs server
 
 logs-m1: context-colima logs context-docker-desktop
 
-ps:
-	@docker ps
+stats:
+	@docker stats
 
-ps-m1: context-colima ps context-docker-desktop
+stats-m1: context-colima stats context-docker-desktop
 
-workspace:
-	@docker-compose exec server /bin/bash
+stop-all:
+	@docker stop $(shell docker ps -aq)
 
-sqlplus:
-	@docker-compose exec server sqlplus / as sysdba
+stop-all-m1: context-colima stop-all context-docker-desktop
 
 clean:
 	@docker-compose down -v --remove-orphans
