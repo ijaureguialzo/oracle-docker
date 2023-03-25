@@ -9,7 +9,7 @@ else
 $(error No se encuentra el fichero .env)
 endif
 
-ARCH := $(shell docker run --rm alpine uname -m)
+ARCH := $(shell docker context use default 2>/dev/null 1>&2 && docker run --rm alpine uname -m)
 
 help: _header
 	${info }
