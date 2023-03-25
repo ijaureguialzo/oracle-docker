@@ -16,7 +16,6 @@ help: _header
 	@echo Opciones:
 	@echo ---------------------------------------------
 	@echo start / stop / restart
-	@echo start-m1 / stop-m1 / restart-m1
 	@echo ---------------------------------------------
 	@echo ps / logs / stats / stop-all
 	@echo ps-m1 / logs-m1 / stats-m1 / stop-all-m1
@@ -39,8 +38,15 @@ else
 	@$(MAKE) -f $(THIS_FILE) colima-start context-colima _start_command context-docker-desktop
 endif
 
-stop:
+_stop_command:
 	@docker-compose stop
+
+stop:
+ifneq ("$(ARCH)", "aarch64")
+	@$(MAKE) -f $(THIS_FILE) _stop_command
+else
+	@$(MAKE) -f $(THIS_FILE) context-colima _stop_command colima-stop
+endif
 
 restart: stop start
 
@@ -55,10 +61,6 @@ context-colima:
 
 context-docker-desktop:
 	@docker context use default
-
-stop-m1: context-colima stop colima-stop
-
-restart-m1: stop-m1 start-m1
 
 ps:
 	@docker ps
