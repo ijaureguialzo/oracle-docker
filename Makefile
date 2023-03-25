@@ -28,6 +28,21 @@ _header:
 	@echo Oracle en Docker
 	@echo ----------------
 
+_colima-start:
+	@colima start --profile colima-oracle --arch x86_64 --memory 4
+
+_colima-stop:
+	@colima stop --profile colima-oracle
+
+_colima-delete:
+	@colima delete --profile colima-oracle -f
+
+_context-colima:
+	@docker context use colima-oracle
+
+_context-docker-desktop:
+	@docker context use default
+
 _start_command:
 	@docker-compose up -d --remove-orphans
 
@@ -35,7 +50,7 @@ start:
 ifneq ("$(ARCH)", "aarch64")
 	@$(MAKE) -f $(THIS_FILE) _start_command
 else
-	@$(MAKE) -f $(THIS_FILE) colima-start context-colima _start_command context-docker-desktop
+	@$(MAKE) -f $(THIS_FILE) _colima-start _context-colima _start_command _context-docker-desktop
 endif
 
 _stop_command:
@@ -45,49 +60,34 @@ stop:
 ifneq ("$(ARCH)", "aarch64")
 	@$(MAKE) -f $(THIS_FILE) _stop_command
 else
-	@$(MAKE) -f $(THIS_FILE) context-colima _stop_command colima-stop
+	@$(MAKE) -f $(THIS_FILE) _context-colima _stop_command _colima-stop
 endif
 
 restart: stop start
 
-colima-start:
-	@colima start --profile colima-oracle --arch x86_64 --memory 4
-
-colima-stop:
-	@colima stop --profile colima-oracle
-
-context-colima:
-	@docker context use colima-oracle
-
-context-docker-desktop:
-	@docker context use default
-
 ps:
 	@docker ps
 
-ps-m1: context-colima ps context-docker-desktop
+ps-m1: _context-colima ps _context-docker-desktop
 
 logs:
 	@docker-compose logs server
 
-logs-m1: context-colima logs context-docker-desktop
+logs-m1: _context-colima logs _context-docker-desktop
 
 stats:
 	@docker stats
 
-stats-m1: context-colima stats context-docker-desktop
+stats-m1: _context-colima stats _context-docker-desktop
 
 stop-all:
 	@docker stop $(shell docker ps -aq)
 
-stop-all-m1: context-colima stop-all context-docker-desktop
+stop-all-m1: _context-colima stop-all _context-docker-desktop
 
 clean:
 	@docker-compose down -v --remove-orphans
 
-clean-m1: context-colima clean context-docker-desktop
+clean-m1: _context-colima clean _context-docker-desktop
 
-colima-delete:
-	@colima delete --profile colima-oracle -f
-
-destroy-m1: context-colima clean colima-delete context-docker-desktop
+destroy-m1: _context-colima clean _colima-delete _context-docker-desktop
