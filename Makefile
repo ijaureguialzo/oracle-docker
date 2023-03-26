@@ -9,7 +9,7 @@ else
 $(error No se encuentra el fichero .env)
 endif
 
-ARCH := $(shell docker context use default 2>/dev/null 1>&2 && docker run --rm alpine uname -m)
+ARCH := $(shell docker context use default && docker run --rm alpine uname -m)
 
 help: _header
 	${info }
@@ -22,6 +22,7 @@ help: _header
 	@echo ----------------------
 
 _header:
+	${info }
 	@echo ----------------
 	@echo Oracle en Docker
 	@echo ----------------
@@ -45,7 +46,7 @@ _start_command:
 	@docker compose up -d --remove-orphans
 
 start:
-ifneq ("$(ARCH)", "aarch64")
+ifneq ("$(ARCH)", "default aarch64")
 	@$(MAKE) -f $(THIS_FILE) _start_command
 else
 	@$(MAKE) -f $(THIS_FILE) _colima-start _context-colima _start_command _context-docker-desktop
@@ -55,7 +56,7 @@ _stop_command:
 	@docker compose stop
 
 stop:
-ifneq ("$(ARCH)", "aarch64")
+ifneq ("$(ARCH)", "default aarch64")
 	@$(MAKE) -f $(THIS_FILE) _stop_command
 else
 	@$(MAKE) -f $(THIS_FILE) _context-colima _stop_command _colima-stop
@@ -67,7 +68,7 @@ _ps_command:
 	@docker ps
 
 ps:
-ifneq ("$(ARCH)", "aarch64")
+ifneq ("$(ARCH)", "default aarch64")
 	@$(MAKE) -f $(THIS_FILE) _ps_command
 else
 	@$(MAKE) -f $(THIS_FILE) _context-colima _ps_command _context-docker-desktop
@@ -77,7 +78,7 @@ _logs_command:
 	@docker compose logs server
 
 logs:
-ifneq ("$(ARCH)", "aarch64")
+ifneq ("$(ARCH)", "default aarch64")
 	@$(MAKE) -f $(THIS_FILE) _logs_command
 else
 	@$(MAKE) -f $(THIS_FILE) _context-colima _logs_command _context-docker-desktop
@@ -87,7 +88,7 @@ _stats_command:
 	@docker stats
 
 stats:
-ifneq ("$(ARCH)", "aarch64")
+ifneq ("$(ARCH)", "default aarch64")
 	@$(MAKE) -f $(THIS_FILE) _stats_command
 else
 	@$(MAKE) -f $(THIS_FILE) _context-colima _stats_command _context-docker-desktop
@@ -97,7 +98,7 @@ _clean_command:
 	@docker compose down -v --remove-orphans
 
 clean:
-ifneq ("$(ARCH)", "aarch64")
+ifneq ("$(ARCH)", "default aarch64")
 	@$(MAKE) -f $(THIS_FILE) _clean_command
 else
 	@$(MAKE) -f $(THIS_FILE) _context-colima _clean_command _colima-delete _context-docker-desktop
