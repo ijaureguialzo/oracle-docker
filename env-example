@@ -1,2 +1,5 @@
 # Contraseña de SYS y SYSTEM
 ORACLE_PASSWORD=12345Abcde
+
+# Puerto de conexión al servidor
+ORACLE_PORT=1521

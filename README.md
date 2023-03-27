@@ -72,6 +72,8 @@ mediante [Docker](https://www.docker.com).
    make start
    ```
 
+   > Si al arrancar da error porque el puerto está ocupado, se puede elegir otro editando el fichero `.env`.
+
 4. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `make ps`.
 
    > Para parar el servidor hay que utilizar el comando `make stop`.

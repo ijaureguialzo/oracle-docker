@@ -10,7 +10,7 @@ services:
     volumes:
       - data:/opt/oracle/oradata
     ports:
-      - "1521:1521"
+      - ${ORACLE_PORT}:1521
     healthcheck:
       test: healthcheck.sh
       interval: 10s
