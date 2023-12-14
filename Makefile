@@ -101,5 +101,9 @@ clean:
 ifneq ("$(ARCH)", "default aarch64")
 	@$(MAKE) -f $(THIS_FILE) _clean_command
 else
-	@$(MAKE) -f $(THIS_FILE) _context-colima _clean_command _colima-delete _context-docker-desktop
+	@-$(MAKE) -f $(THIS_FILE) _context-colima
+	@-$(MAKE) -f $(THIS_FILE) _clean_command
+	@-$(MAKE) -f $(THIS_FILE) _colima-delete
+	@-$(MAKE) -f $(THIS_FILE) _colima-stop
+	@-$(MAKE) -f $(THIS_FILE) _context-docker-desktop
 endif
