@@ -1,3 +1,7 @@
+# Versión de Oracle
+ORACLE_REPO=oracle-xe
+ORACLE_VERSION=21-slim
+
 # Contraseña de SYS y SYSTEM
 ORACLE_PASSWORD=12345Abcde
 
