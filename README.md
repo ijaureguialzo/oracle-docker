@@ -66,6 +66,9 @@ mediante [Docker](https://www.docker.com).
 
    > :warning: Es recomendable cambiar las contraseñas por defecto.
 
+   La versión de Oracle a utilizar se puede configurar en el fichero `.env` y se corresponde con las etiquetas
+   disponibles [aquí](https://hub.docker.com/r/gvenzl/oracle-xe) y [aquí](https://hub.docker.com/r/gvenzl/oracle-free).
+
 3. Arrancar el servidor:
 
    ```shell
@@ -76,19 +79,21 @@ mediante [Docker](https://www.docker.com).
 
 4. Cuando haya arrancado (tarda unos minutos) aparecerá `(healthy)` en la salida del comando `make ps`.
 
+   > Se puede ver el progreso de arranque mediante el comando `make logs`.
+
    > Para parar el servidor hay que utilizar el comando `make stop`.
 
 ## Datos de conexión
 
-| Clave            | Valor                               |
-|------------------|-------------------------------------|
-| Usuario          | `SYS`                               |
-| Contraseña       | La configurada en el fichero `.env` |
-| Tipo de conexión | Básico                              |
-| Rol              | `SYSDBA`                            |
-| Host             | `localhost`                         |
-| Puerto           | `1521`                              |
-| SID              | `XE`                                |
+| Clave            | Valor                                                           |
+|------------------|-----------------------------------------------------------------|
+| Usuario          | `SYS`                                                           |
+| Contraseña       | La configurada en el fichero `.env`                             |
+| Tipo de conexión | Básico                                                          |
+| Rol              | `SYSDBA`                                                        |
+| Host             | `localhost`                                                     |
+| Puerto           | `1521`                                                          |
+| SID              | `XE` (hasta la versión 21) o `FREE` (a partir de la versión 23) |
 
 ## Script para crear usuario
 
