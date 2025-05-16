@@ -13,6 +13,8 @@ help: _header
 	@echo ----------------------
 	@echo start / stop / restart
 	@echo ----------------------
+	@echo workspace
+	@echo ----------------------
 	@echo ps / logs / stats
 	@echo clean
 	@echo ----------------------
@@ -30,6 +32,9 @@ stop:
 	@docker compose stop
 
 restart: stop start
+
+workspace:
+	@docker compose exec server /bin/bash
 
 ps:
 	@docker ps
