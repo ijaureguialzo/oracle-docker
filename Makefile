@@ -14,7 +14,7 @@ help: _header
 	@echo start / stop / restart
 	@echo ----------------------
 	@echo workspace
-	@echo user [name=egibide]
+	@echo user [name=egibide] [password=12345Abcde]
 	@echo ----------------------
 	@echo ps / logs / stats
 	@echo clean
@@ -38,10 +38,12 @@ workspace:
 	@docker compose exec server /bin/bash
 
 name?="egibide"
+password?="12345Abcde"
 
 user:
 	@docker compose cp crear_usuario.sql server:/tmp/crear_usuario.sql
 	@docker compose exec -u root server /bin/sh -c "sed -i 's/egibide/$(name)/g' /tmp/crear_usuario.sql"
+	@docker compose exec -u root server /bin/sh -c "sed -i 's/12345Abcde/$(password)/g' /tmp/crear_usuario.sql"
 	@docker compose exec server /bin/sh -c "echo exit | sqlplus -S system/${ORACLE_PASSWORD} @/tmp/crear_usuario.sql"
 	@docker compose exec -u root server /bin/sh -c "rm -f /tmp/crear_usuario.sql"
 
